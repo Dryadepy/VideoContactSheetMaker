@@ -15,7 +15,12 @@ FFmpeg and FFprobe is required.
 Get latest package from https://ffmpeg.zeranoe.com/builds/ and extract ffmpeg.exe and ffprobe into the same directory where VideoContactSheetMaker.exe is placed in.
 
 #### Linux user:
-Install latest ffmpeg and ffprobe the usual way and verify PATH environment variable is set.
+Install latest ffmpeg and ffprobe the usual way and verify PATH environment variable is set. A usual way could be:
+
+```
+sudo apt-get update
+sudo apt-get install ffmpeg
+```
 
 # How to use:
 

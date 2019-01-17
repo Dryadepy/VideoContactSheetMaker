@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<SerializableProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FontHeaderColumnWidth>0</FontHeaderColumnWidth>
+  <Font>Arial</Font>
+  <ThumbnailWidth>250</ThumbnailWidth>
+  <ThumbnailHeight>140</ThumbnailHeight>
+  <Rows>10</Rows>
+  <Columns>4</Columns>
+  <BackgroundColor>
+    <R>241</R>
+    <G>241</G>
+    <B>241</B>
+    <A>255</A>
+  </BackgroundColor>
+  <HeaderTextColor>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+    <A>255</A>
+  </HeaderTextColor>
+  <OverlayTextColor>
+    <R>255</R>
+    <G>255</G>
+    <B>255</B>
+    <A>255</A>
+  </OverlayTextColor>
+  <HasHeader>true</HasHeader>
+  <ShowTimeStamp>true</ShowTimeStamp>
+  <ShowAdvertisement>true</ShowAdvertisement>
+</SerializableProfile>

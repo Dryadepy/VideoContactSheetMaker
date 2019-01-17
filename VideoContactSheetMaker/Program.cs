@@ -13,20 +13,6 @@ namespace VideoContactSheetMaker {
 				return -1;
 			}
 
-			//var x = new System.Xml.Serialization.XmlSerializer(typeof(DefaultProfile1));
-			//using (var fs = File.Create("F:\\test.xml"))
-			//	x.Serialize(fs, new DefaultProfile1());
-
-#if DEBUG
-			var l = new List<string>(args);
-			l.Add("-i");
-			l.Add(@"G:\Videos");
-			l.Add("-r");
-			l.Add("-o");
-			l.Add(@"C:\Users\User\Desktop");
-			args = l.ToArray();
-#endif
-
 			var cp = new ConsoleProgram();
 			var result = cp.Run(args);
 
@@ -40,7 +26,7 @@ namespace VideoContactSheetMaker {
 			readonly List<string> IncludeFolders = new List<string>();
 			bool Recursive;
 			string OutputFolder;
-			IProfile Profile;
+			IProfile Profile = new DefaultProfile3();
 
 
 			public int Run(string[] args) {

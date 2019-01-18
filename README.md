@@ -33,9 +33,9 @@ Available commands:
   -o Path        Optional: Output folder, by default its the same folder as the file
 
 Examples:
-VideoContactSheetMaker -i "C:\Videos\
-VideoContactSheetMaker -i "C:\Videos\ -s default2
-VideoContactSheetMaker -i "C:\Videos\ -i "C:\Videos2\" -r -s "C:\profile.xml" -o "C:\Screens\"
+VideoContactSheetMaker -i "C:\Videos\"
+VideoContactSheetMaker -i "C:\Videos\" -s default2
+VideoContactSheetMaker -i "C:\Videos\" -i "C:\Videos2\" -r -s "C:\profile.xml" -o "C:\Screens\"
 ```
 
 # Screenshots
@@ -47,4 +47,4 @@ Default profile 3
 
 # License
 Video Contact Sheet Maker is licensed under GPLv3  
-Video Contact Sheet Maker uses ffmpeg / ffprobe (not included) which is licesed under LGPL 2.1 / GPL v2
+Video Contact Sheet Maker uses ffmpeg / ffprobe (not included) which is licensed under LGPL 2.1 / GPL v2

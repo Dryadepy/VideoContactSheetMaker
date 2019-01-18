@@ -28,14 +28,15 @@ sudo apt-get install ffmpeg
 Available commands:
 
   -i Path        Required: Include a file or folder
-  -s Path        Optional: Path to profile or a default profile name, otherwise it uses standard profile
+  -p Path        Optional: Path to profile or a default profile name, otherwise it uses standard profile
   -r             Optional: Recursive, applies to included folders
   -o Path        Optional: Output folder, by default its the same folder as the file
 
 Examples:
+VideoContactSheetMaker -i "C:\Videos\sample.mp4"
 VideoContactSheetMaker -i "C:\Videos\"
-VideoContactSheetMaker -i "C:\Videos\" -s default2
-VideoContactSheetMaker -i "C:\Videos\" -i "C:\Videos2\" -r -s "C:\profile.xml" -o "C:\Screens\"
+VideoContactSheetMaker -i "C:\Videos\" -p default2
+VideoContactSheetMaker -i "C:\Videos\" -i "C:\Videos2\" -r -p "C:\profile.xml" -o "C:\Screens\"
 ```
 
 # Screenshots

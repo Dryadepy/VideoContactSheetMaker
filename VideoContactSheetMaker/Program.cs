@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace VideoContactSheetMaker {
@@ -92,7 +91,7 @@ namespace VideoContactSheetMaker {
 			}
 			static readonly HelpInfo[] helpInfos = {
 			new HelpInfo("-i", Properties.Resources.Path, Properties.Resources.IncludeAFileOrFolder),
-			new HelpInfo("-s", Properties.Resources.Path, Properties.Resources.ProfilePath),
+			new HelpInfo("-p", Properties.Resources.Path, Properties.Resources.ProfilePath),
 			new HelpInfo("-r", string.Empty,Properties.Resources.RecursiveAppliesToIncludedFolders),
 			new HelpInfo("-o", Properties.Resources.Path,Properties.Resources.OutputFolder),
 		};

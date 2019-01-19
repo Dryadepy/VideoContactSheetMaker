@@ -12,7 +12,7 @@ Video Contact Sheet Maker is a cross-platform software to create contact sheets 
 FFmpeg and FFprobe is required.
 
 #### Windows user:
-Get latest package from https://ffmpeg.zeranoe.com/builds/ and extract ffmpeg.exe and ffprobe into the same directory where VideoContactSheetMaker.exe is placed in.
+It's already included.
 
 #### Linux user:
 Install latest ffmpeg and ffprobe the usual way and verify PATH environment variable is set. A usual way could be:
@@ -48,4 +48,4 @@ Default profile 3
 
 # License
 Video Contact Sheet Maker is licensed under GPLv3  
-Video Contact Sheet Maker uses ffmpeg / ffprobe (not included) which is licensed under LGPL 2.1 / GPL v2
+Video Contact Sheet Maker uses ffmpeg / ffprobe which is licensed under LGPL 2.1 / GPL v2

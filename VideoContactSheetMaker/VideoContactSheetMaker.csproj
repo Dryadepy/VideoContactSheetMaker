@@ -56,7 +56,7 @@
     <None Update="Fonts\absender1.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Fonts\FUTRFW.TTF">
+    <None Update="Fonts\FUTRFW.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Fonts\monofonto.ttf">

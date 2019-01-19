@@ -20,8 +20,8 @@ namespace VideoContactSheetMaker {
 
 		class ConsoleProgram {
 			static readonly char PATHS_SEP = Path.PathSeparator;
-			
-			readonly List<string> IncludeFolders = new List<string>();
+
+			readonly List<InputFile> IncludeFolders = new List<InputFile>();
 			bool Recursive;
 			string OutputFolder;
 			IProfile Profile = new DefaultProfile3();
@@ -157,10 +157,20 @@ namespace VideoContactSheetMaker {
 						case "-i":
 							if (next == null)
 								throw new ParseException(Properties.Resources.MissingIncludeArgument);
-							var path = Path.GetFullPath(next);
-							if (!Directory.Exists(path) && !File.Exists(path))
-								throw new ParseException(string.Format(Properties.Resources.ThePathDoesNotExist, path));
-							IncludeFolders.Add(path);
+
+							//is it an URL?
+							var uri = new Uri(next);
+							if (!uri.IsFile) {
+								IncludeFolders.Add(new InputFile(next, InputFileType.Url));
+							}
+							else {	
+								var path = Path.GetFullPath(next);
+								var isDir = Directory.Exists(path);
+								if (!isDir && !File.Exists(path)) {
+									throw new ParseException(string.Format(Properties.Resources.ThePathDoesNotExist, path));
+								}
+								IncludeFolders.Add(new InputFile(path, isDir ? InputFileType.Directory : InputFileType.File));
+							}
 							i++;
 							break;
 						}

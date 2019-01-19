@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace VideoContactSheetMaker
         public const string FFmpegExecutableName = "ffmpeg";
         public static string FfmpegPath { get; }
         public static string FfprobePath { get; }
-
+        public static readonly string CurrentDirectory;
         private static readonly string[] suf = { " B", " KB", " MB", " GB", " TB", " PB", " EB" };
 
         public static bool FfFilesExist
@@ -29,18 +29,18 @@ namespace VideoContactSheetMaker
 
         static Utils()
         {
-            var currentDir = Path.GetDirectoryName(typeof(FFmpegWrapper.FFmpegWrapper).Assembly.Location);
+            CurrentDirectory = Path.GetDirectoryName(typeof(FFmpegWrapper.FFmpegWrapper).Assembly.Location);
             var pathsEnv = Environment.GetEnvironmentVariable("PATH")?.Split(Path.PathSeparator);
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                if (File.Exists(currentDir + $"\\{FFmpegExecutableName}.exe"))
-                    FfmpegPath = currentDir + $"\\{FFmpegExecutableName}";
-                else if (File.Exists(currentDir + $"\\bin\\{FFmpegExecutableName}.exe"))
-                    FfmpegPath = currentDir + $"\\bin\\{FFmpegExecutableName}";
-                if (File.Exists(currentDir + $"\\{FFprobeExecutableName}.exe"))
-                    FfprobePath = currentDir + $"\\{FFprobeExecutableName}";
-                else if (File.Exists(currentDir + $"\\bin\\{FFprobeExecutableName}.exe"))
-                    FfprobePath = currentDir + $"\\bin\\{FFprobeExecutableName}";
+                if (File.Exists(CurrentDirectory + $"\\{FFmpegExecutableName}.exe"))
+                    FfmpegPath = CurrentDirectory + $"\\{FFmpegExecutableName}";
+                else if (File.Exists(CurrentDirectory + $"\\bin\\{FFmpegExecutableName}.exe"))
+                    FfmpegPath = CurrentDirectory + $"\\bin\\{FFmpegExecutableName}";
+                if (File.Exists(CurrentDirectory + $"\\{FFprobeExecutableName}.exe"))
+                    FfprobePath = CurrentDirectory + $"\\{FFprobeExecutableName}";
+                else if (File.Exists(CurrentDirectory + $"\\bin\\{FFprobeExecutableName}.exe"))
+                    FfprobePath = CurrentDirectory + $"\\bin\\{FFprobeExecutableName}";
             }
 
 

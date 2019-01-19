@@ -11,7 +11,7 @@ namespace VideoContactSheetMaker {
 	class ContactSheetMaker {
 		private const string AdvertisementText = "VCSM";
 		private const string AdvertisementSubText = "Video Contact Sheet Maker @ github";
-		readonly List<string> InputFiles = new List<string>();
+		readonly List<InputFile> InputFiles = new List<InputFile>();
 		private readonly IProfile Profile;
 		readonly string OutputFolder;
 
@@ -20,17 +20,23 @@ namespace VideoContactSheetMaker {
 
 		private readonly Dictionary<CustomFonts, FontFamily> TextFonts = new Dictionary<CustomFonts, FontFamily>();
 
-		public ContactSheetMaker(IProfile profile, List<string> includes, bool recursive, string outputPath) {
+		public ContactSheetMaker(IProfile profile, List<InputFile> includes, bool recursive, string outputPath) {
 			Profile = profile;
 			OutputFolder = outputPath;
 			InstallFonts();
 			foreach (var s in includes) {
-				if (System.IO.File.Exists(s))
+				switch (s.Type) {
+				case InputFileType.File:
 					InputFiles.Add(s);
-				else if (System.IO.Directory.Exists(s))
-					InputFiles.AddRange(FileHelper.GetFilesRecursive(s, recursive));
-				else
-					Console.Write($"Skipped path because does not exist: '{s}'");
+					break;
+				case InputFileType.Directory:
+					foreach (var f in FileHelper.GetFilesRecursive(s.File, recursive))
+						InputFiles.Add(new InputFile(f, InputFileType.File));
+					break;
+				case InputFileType.Url:
+					InputFiles.Add(s);
+					break;
+				}
 			}
 		}
 
@@ -58,16 +64,16 @@ namespace VideoContactSheetMaker {
 
 			foreach (var f in InputFiles) {
 				var st = Stopwatch.StartNew();
-				Console.WriteLine($"Processing '{f}'...");
+				Console.WriteLine($"Processing '{f.Filename}'...");
 				var ffProbe = new FFProbeWrapper.FFProbeWrapper();
-				var mediaInfo = ffProbe.GetMediaInfo(f);
+				var mediaInfo = ffProbe.GetMediaInfo(f.File);
 
 				var thumbnails = new byte[TotalThumbnails][];
 				var position = 0f;
 				for (int i = 0; i < TotalThumbnails; i++) {
 					var ffMpeg = new FFmpegWrapper.FFmpegWrapper();
 					position += Convert.ToSingle(mediaInfo.Duration.TotalSeconds * positionList[i]);
-					thumbnails[i] = ffMpeg.GetVideoThumbnail(f, position, Profile.ThumbnailWidth,
+					thumbnails[i] = ffMpeg.GetVideoThumbnail(f.File, position, Profile.ThumbnailWidth,
 						Profile.ThumbnailHeight);
 				}
 
@@ -80,10 +86,10 @@ namespace VideoContactSheetMaker {
 
 						if (Profile.HasHeader) {
 							var font = TextFonts[Profile.Font].CreateFont(16, FontStyle.Regular);
-							var fi = new System.IO.FileInfo(f);
+							
 							string text =
-								$@"{$"{"File Name: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {System.IO.Path.GetFileName(f)}"}
-{$"{"File Size: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {Utils.BytesToString(fi.Length)}"} ({fi.Length:N0} bytes)
+								$@"{$"{"File Name: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {f.Filename}"}
+{$"{"File Size: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {Utils.BytesToString(f.FileSize)}"} ({f.FileSize:N0} bytes)
 {$"{"Resolution: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {mediaInfo.Streams[0].Width}x{mediaInfo.Streams[0].Height}"}
 {$"{"Duration: ".PadRight(Profile.FontHeaderColumnWidth, ' ')} {mediaInfo.Duration.TrimMiliseconds()}"}";
 							ctx.DrawText(text, font, Profile.HeaderTextColor, new Point(7, 7));
@@ -138,8 +144,8 @@ namespace VideoContactSheetMaker {
 						}
 
 					});
-					var outputFile = Utils.SafePathCombine(string.IsNullOrEmpty(OutputFolder) ? System.IO.Path.GetDirectoryName(f) : OutputFolder,
-						System.IO.Path.GetFileNameWithoutExtension(f) + ".jpg");
+					var outputFile = Utils.SafePathCombine(string.IsNullOrEmpty(OutputFolder) ? (f.Type == InputFileType.Url ? Utils.CurrentDirectory : System.IO.Path.GetDirectoryName(f.File)) : OutputFolder,
+						f.FilenameWithoutExtension + ".jpg");
 					img.Save(outputFile);
 					st.Stop();
 					Console.WriteLine($"'{outputFile}' created in {st.Elapsed}");

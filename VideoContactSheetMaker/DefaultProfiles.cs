@@ -2,10 +2,8 @@ using System;
 using System.Xml.Serialization;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace VideoContactSheetMaker
-{
- public   interface IProfile
-    {
+namespace VideoContactSheetMaker {
+	public interface IProfile {
 		int FontHeaderColumnWidth { get; set; }
 		CustomFonts Font { get; set; }
 
@@ -19,7 +17,7 @@ namespace VideoContactSheetMaker
 		bool HasHeader { get; set; }
 		bool ShowTimeStamp { get; set; }
 		bool ShowAdvertisement { get; set; }
-    }
+	}
 
 	[Serializable]
 	public class SerializableProfile : IProfile {
@@ -47,61 +45,58 @@ namespace VideoContactSheetMaker
 		public bool ShowTimeStamp { get; set; }
 		[XmlElement("ShowAdvertisement")]
 		public bool ShowAdvertisement { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// KM / MPC-HC Player - like profile
 	/// </summary>
 	[Serializable]
-public	class DefaultProfile1 : IProfile
-    {
-        public int FontHeaderColumnWidth {get; set;} = 0;
-        public CustomFonts Font {get; set;} =  CustomFonts.Arial;
-        public int ThumbnailWidth {get; set;} = 250;
-        public int ThumbnailHeight {get; set;} = 140;
-        public int Rows {get; set;} = 10;
-        public int Columns {get; set;} = 4;
-        public Rgba32 BackgroundColor {get; set;} = new Rgba32(241, 241, 241);
-        public Rgba32 HeaderTextColor {get; set;} = Rgba32.Black;
-        public Rgba32 OverlayTextColor {get; set;} = Rgba32.White;
-        public bool HasHeader {get; set;} = true;
-        public bool ShowTimeStamp {get; set;} = true;
-        public bool ShowAdvertisement {get; set;} = true;
-    }
-    /// <summary>
-    /// Big thumbnails
-    /// </summary>
-    class DefaultProfile2 : IProfile
-    {
-        public int FontHeaderColumnWidth { get; set; } = 0;
-        public CustomFonts Font { get; set; } = CustomFonts.MonoFonto;
-        public int ThumbnailWidth { get; set; } = 950;
-        public int ThumbnailHeight { get; set; } = 540;
-        public int Rows { get; set; } = 12;
-        public int Columns {get; set;} = 2;
-        public Rgba32 BackgroundColor {get; set;} = Rgba32.Black;
-        public Rgba32 HeaderTextColor {get; set;} = Rgba32.White;
-        public Rgba32 OverlayTextColor {get; set;} = Rgba32.White;
-		public bool HasHeader {get; set;} = false;
-        public bool ShowTimeStamp {get; set;} = true;
-        public bool ShowAdvertisement {get; set;} = false;
-    }
-    /// <summary>
-    /// Video Thumbnail Maker - like profile
-    /// </summary>
-    class DefaultProfile3 : IProfile
-    {
-        public int FontHeaderColumnWidth {get; set;} = 15;
-        public CustomFonts Font {get; set;} = CustomFonts.Roboto;
-        public int ThumbnailWidth {get; set;} = 370;
-        public int ThumbnailHeight {get; set;} = 210;
-        public int Rows {get; set;} = 4;
-        public int Columns {get; set;} = 5;
-        public Rgba32 BackgroundColor {get; set;} = new Rgba32(36, 36, 36);
-        public Rgba32 HeaderTextColor {get; set;} = Rgba32.White;
-        public Rgba32 OverlayTextColor {get; set;} = Rgba32.White;
-		public bool HasHeader {get; set;} = true;
-        public bool ShowTimeStamp {get; set;} = true;
-        public bool ShowAdvertisement {get; set;} = true;
-    }
+	public class DefaultProfile1 : IProfile {
+		public int FontHeaderColumnWidth { get; set; } = 0;
+		public CustomFonts Font { get; set; } = CustomFonts.NeoLetters;
+		public int ThumbnailWidth { get; set; } = 250;
+		public int ThumbnailHeight { get; set; } = 140;
+		public int Rows { get; set; } = 10;
+		public int Columns { get; set; } = 4;
+		public Rgba32 BackgroundColor { get; set; } = new Rgba32(241, 241, 241);
+		public Rgba32 HeaderTextColor { get; set; } = Rgba32.Black;
+		public Rgba32 OverlayTextColor { get; set; } = Rgba32.White;
+		public bool HasHeader { get; set; } = true;
+		public bool ShowTimeStamp { get; set; } = true;
+		public bool ShowAdvertisement { get; set; } = true;
+	}
+	/// <summary>
+	/// Big thumbnails
+	/// </summary>
+	class DefaultProfile2 : IProfile {
+		public int FontHeaderColumnWidth { get; set; } = 0;
+		public CustomFonts Font { get; set; } = CustomFonts.MonoFonto;
+		public int ThumbnailWidth { get; set; } = 950;
+		public int ThumbnailHeight { get; set; } = 540;
+		public int Rows { get; set; } = 12;
+		public int Columns { get; set; } = 2;
+		public Rgba32 BackgroundColor { get; set; } = Rgba32.Black;
+		public Rgba32 HeaderTextColor { get; set; } = Rgba32.White;
+		public Rgba32 OverlayTextColor { get; set; } = Rgba32.White;
+		public bool HasHeader { get; set; } = false;
+		public bool ShowTimeStamp { get; set; } = true;
+		public bool ShowAdvertisement { get; set; } = false;
+	}
+	/// <summary>
+	/// Video Thumbnail Maker - like profile
+	/// </summary>
+	class DefaultProfile3 : IProfile {
+		public int FontHeaderColumnWidth { get; set; } = 15;
+		public CustomFonts Font { get; set; } = CustomFonts.Roboto;
+		public int ThumbnailWidth { get; set; } = 370;
+		public int ThumbnailHeight { get; set; } = 210;
+		public int Rows { get; set; } = 4;
+		public int Columns { get; set; } = 5;
+		public Rgba32 BackgroundColor { get; set; } = new Rgba32(36, 36, 36);
+		public Rgba32 HeaderTextColor { get; set; } = Rgba32.White;
+		public Rgba32 OverlayTextColor { get; set; } = Rgba32.White;
+		public bool HasHeader { get; set; } = true;
+		public bool ShowTimeStamp { get; set; } = true;
+		public bool ShowAdvertisement { get; set; } = true;
+	}
 }

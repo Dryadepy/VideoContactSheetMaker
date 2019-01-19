@@ -5,7 +5,6 @@ namespace VideoContactSheetMaker
      */
 	public enum CustomFonts
     {
-        Arial,
         MonoFonto,
         NeoLetters,
         Absender,

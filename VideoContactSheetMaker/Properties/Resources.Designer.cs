@@ -61,21 +61,20 @@ namespace VideoContactSheetMaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] absender1 {
-            get {
-                object obj = ResourceManager.GetObject("absender1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Available commands:.
         /// </summary>
         internal static string AvailableCommands {
             get {
                 return ResourceManager.GetString("AvailableCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FFmpeg / FFprobe is missing..
+        /// </summary>
+        internal static string FFmpegFFprobeIsMissing {
+            get {
+                return ResourceManager.GetString("FFmpegFFprobeIsMissing", resourceCulture);
             }
         }
         
@@ -103,16 +102,6 @@ namespace VideoContactSheetMaker.Properties {
         internal static string FFProbeProcessExceededExecutionTimeout {
             get {
                 return ResourceManager.GetString("FFProbeProcessExceededExecutionTimeout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] FUTRFW {
-            get {
-                object obj = ResourceManager.GetObject("FUTRFW", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -180,26 +169,6 @@ namespace VideoContactSheetMaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] monofonto {
-            get {
-                object obj = ResourceManager.GetObject("monofonto", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] neoletters {
-            get {
-                object obj = ResourceManager.GetObject("neoletters", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Optional: Output folder, by default its the same folder as the file.
         /// </summary>
         internal static string OutputFolder {
@@ -232,16 +201,6 @@ namespace VideoContactSheetMaker.Properties {
         internal static string RecursiveAppliesToIncludedFolders {
             get {
                 return ResourceManager.GetString("RecursiveAppliesToIncludedFolders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] RobotoMono_Bold {
-            get {
-                object obj = ResourceManager.GetObject("RobotoMono_Bold", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

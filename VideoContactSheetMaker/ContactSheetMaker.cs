@@ -40,26 +40,22 @@ namespace VideoContactSheetMaker
 
         void InstallFonts()
         {
-            TextFonts.Add(CustomFonts.Arial, SystemFonts.Find("Arial"));
+	       var dir = Utils.SafePathCombine(System.IO.Path.GetDirectoryName(typeof(ContactSheetMaker).Assembly.Location), "Fonts");
+			TextFonts.Add(CustomFonts.Arial, SystemFonts.Find("Arial"));
             var fonts = new FontCollection();
-            using (var ms = new System.IO.MemoryStream(Properties.Resources.monofonto))
-                TextFonts.Add(CustomFonts.MonoFonto, fonts.Install(ms));
-            using (var ms = new System.IO.MemoryStream(Properties.Resources.neoletters))
-                TextFonts.Add(CustomFonts.NeoLetters, fonts.Install(ms));
-            using (var ms = new System.IO.MemoryStream(Properties.Resources.absender1))
-                TextFonts.Add(CustomFonts.Absender, fonts.Install(ms));
-            using (var ms = new System.IO.MemoryStream(Properties.Resources.FUTRFW))
-                TextFonts.Add(CustomFonts.FuturistFixed, fonts.Install(ms));
-            using (var ms = new System.IO.MemoryStream(Properties.Resources.RobotoMono_Bold))
-                TextFonts.Add(CustomFonts.Roboto, fonts.Install(ms));
+            using (var ms = System.IO.File.OpenRead(Utils.SafePathCombine(dir, "monofonto.ttf")))
+				TextFonts.Add(CustomFonts.MonoFonto, fonts.Install(ms));
+            using (var ms = System.IO.File.OpenRead(Utils.SafePathCombine(dir, "neoletters.ttf")))
+				TextFonts.Add(CustomFonts.NeoLetters, fonts.Install(ms));
+            using (var ms = System.IO.File.OpenRead(Utils.SafePathCombine(dir, "absender1.ttf")))
+				TextFonts.Add(CustomFonts.Absender, fonts.Install(ms));
+            using (var ms = System.IO.File.OpenRead(Utils.SafePathCombine(dir, "FUTRFW.ttf")))
+				TextFonts.Add(CustomFonts.FuturistFixed, fonts.Install(ms));
+            using (var ms = System.IO.File.OpenRead(Utils.SafePathCombine(dir, "RobotoMono-Bold.ttf")))
+				TextFonts.Add(CustomFonts.Roboto, fonts.Install(ms));
         }
-
-        public void DoWork()
-        {
-            CreateThumbnails();
-        }
-
-        void CreateThumbnails()
+		
+       public void CreateThumbnails()
         {
             var positionList = new float[TotalThumbnails];
             for (var i = 0; i < TotalThumbnails; i++)

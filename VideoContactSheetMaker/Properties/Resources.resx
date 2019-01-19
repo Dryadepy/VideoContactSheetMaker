@@ -126,22 +126,6 @@
   <data name="FFProbeProcessExceededExecutionTimeout" xml:space="preserve">
     <value>FFProbe process exceeded execution timeout ({0}) and was aborted, File: {1}</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="monofonto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\monofonto.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="neoletters" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\neoletters.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="absender1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\absender1.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FUTRFW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FUTRFW.TTF;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="RobotoMono_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RobotoMono-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="InvalidArgument" xml:space="preserve">
     <value>Invalid argument: {0}</value>
   </data>
@@ -186,5 +170,8 @@
   </data>
   <data name="UnknownArgument" xml:space="preserve">
     <value>Unknown argument {0}</value>
+  </data>
+  <data name="FFmpegFFprobeIsMissing" xml:space="preserve">
+    <value>FFmpeg / FFprobe is missing.</value>
   </data>
 </root>

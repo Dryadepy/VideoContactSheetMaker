@@ -8,7 +8,7 @@ namespace VideoContactSheetMaker {
 		static int Main(string[] args) {
 			Console.OutputEncoding = Encoding.UTF8;
 			if (!Utils.FfFilesExist) {
-				Console.WriteLine("FFmpeg / FFprobe is missing.");
+				Console.WriteLine(Properties.Resources.FFmpegFFprobeIsMissing);
 				return -1;
 			}
 
@@ -20,12 +20,13 @@ namespace VideoContactSheetMaker {
 
 		class ConsoleProgram {
 			static readonly char PATHS_SEP = Path.PathSeparator;
-
-
+			
 			readonly List<string> IncludeFolders = new List<string>();
 			bool Recursive;
 			string OutputFolder;
 			IProfile Profile = new DefaultProfile3();
+
+			ContactSheetMaker cs;
 
 
 			public int Run(string[] args) {
@@ -54,8 +55,8 @@ namespace VideoContactSheetMaker {
 			}
 
 			void DoWork() {
-				var cs = new ContactSheetMaker(Profile, IncludeFolders, Recursive, OutputFolder);
-				cs.DoWork();
+				cs = new ContactSheetMaker(Profile, IncludeFolders, Recursive, OutputFolder);
+				cs.CreateThumbnails();
 			}
 
 			static void PrintHelp() {
